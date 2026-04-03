@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview Shock</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    header {
+      padding: 1.5rem;
+      text-align: center;
+      background: linear-gradient(90deg, #111, #1f1f1f);
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    h2 {
+      padding: 1.5rem;
+      text-align: center;
+      background: linear-gradient(90deg, #111, #1f1f1f);
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+
+    .game-card {
+      background: linear-gradient(145deg, #111, #1a1a1a);
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+    }
+
+    .game-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .game-title {
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 85%;
+      height: 85%;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.9);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .close-btn:hover {
+      background: red;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+<img src="https://x.com/babyfish713/photo">
+<header>🎮 Overview Shock</header>
+<br>
+<h2>By Albert Howard and the Overview Development Team</h2>
+<header>Game Launchers</header>
+<div class="grid">
+  <div class="game-card" onclick="openGame('https://hahagames.com')">
+    <img class="game-image" src="https://www.hahagames.com/icon-192x192.png" alt="Game 1">
+    <div class="game-title">Ha Ha Games</div>
+  </div>
+  <div class="game-card" onclick="openGame('https://cookie-clicker2.com')">
+    <img class="game-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQozzx6ja68ReA5Z4p96-GwZV1mxvTz_WEAxw&s" alt="Game 2">
+    <div class="game-title">Cookie Clicker 2</div>
+  </div>
+</div>
+<header>Games</header>
+<div class="grid">
+
+  <div class="game-card" onclick="openGame('https://eaglercraft.com/')">
+    <img class="game-image" src="https://cdn.freebiesupply.com/logos/large/2x/minecraft-1-logo-svg-vector.svg" alt="Game 3">
+    <div class="game-title">Eagler Craft</div>
+  </div>
+
+  <div class="game-card" onclick="openGame('https://frontwars.io/')">
+    <img class="game-image" src="https://imgs.crazygames.com/frontwars-io_16x9/20251027025421/frontwars-io_16x9-cover?metadata=none&quality=100&width=1200&height=630&fit=crop" alt="Game 4">
+    <div class="game-title">Frontwars</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="iframe-container">
+    <button class="close-btn" onclick="closeGame()">✕</button>
+    <iframe id="gameFrame" src=""></iframe>
+  </div>
+</div>
+
+<script>
+  function openGame(url) {
+    document.getElementById('gameFrame').src = url;
+    document.getElementById('overlay').style.display = 'flex';
+    console.log("Game Opened");
+  }
+
+  function closeGame() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('gameFrame').src = '';
+  }
+</script>
+
+</body>
+</html>
