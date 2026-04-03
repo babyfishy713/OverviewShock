@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overview Shock</title>
+  <title>Overview Shock 1.0.0 RELEASE</title>
   <style>
     body {
       margin: 0;
@@ -117,13 +117,73 @@
       background: red;
       transform: scale(1.1);
     }
+    .input {
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+      font-weight: 500;
+      font-size: .8vw;
+      color: #fff;
+      background-color: rgb(28,28,30);
+      box-shadow: 0 0 .4vw rgba(0,0,0,0.5), 0 0 0 .15vw transparent;
+      border-radius: 0.4vw;
+      border: none;
+      outline: none;
+      padding: 0.4vw;
+      max-width: 190px;
+      transition: .4s;
+    }
+
+.input:hover {
+  box-shadow: 0 0 0 .15vw rgba(135, 207, 235, 0.186);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 .15vw skyblue;
+}
+
+.modern-button {
+  /* Layout & Size */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  
+  /* Styling */
+  background-color: #3b82f6; /* Modern Blue */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Soft rounded corners */
+  cursor: pointer;
+  
+  /* Interactivity */
+  transition: all 0.3s ease; /* Smooth transition for hover */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Hover State: Changes color and lifts slightly */
+.modern-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px); /* Moves button up */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Active State: Simulates being pressed */
+.modern-button:active {
+  transform: translateY(0px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
   </style>
 </head>
 <body>
 <img src="https://x.com/babyfish713/photo">
-<header>🎮 Overview Shock</header>
+<header>🎮 Overview Shock 1.0.0 RELEASE</header>
 <br>
 <h2>By Albert Howard and the Overview Development Team</h2>
+<div class="grid">
+  <input id="unblockurltype" type="text" name="text" class="input" placeholder="Type To Unblock URL">
+  <button class="modern-button" onclick="openGamebyurl()">Open</button>
+</div>
+
+
 <header>Game Launchers</header>
 <div class="grid">
   <div class="game-card" onclick="openGame('https://hahagames.com')">
@@ -133,6 +193,10 @@
   <div class="game-card" onclick="openGame('https://cookie-clicker2.com')">
     <img class="game-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQozzx6ja68ReA5Z4p96-GwZV1mxvTz_WEAxw&s" alt="Game 2">
     <div class="game-title">Cookie Clicker 2</div>
+  </div>
+  <div class="game-card" onclick="openGame('https://www.coolmathgames.com/')">
+    <img class="game-image" src="https://www.coolmathgames.com/logo.webp" alt="Game 2">
+    <div class="game-title">Cool Math Games</div>
   </div>
 </div>
 <header>Games</header>
@@ -147,6 +211,29 @@
     <img class="game-image" src="https://imgs.crazygames.com/frontwars-io_16x9/20251027025421/frontwars-io_16x9-cover?metadata=none&quality=100&width=1200&height=630&fit=crop" alt="Game 4">
     <div class="game-title">Frontwars</div>
   </div>
+
+  <div class="game-card" onclick="openGame('https://www.hahagames.com/embed/run-3')">
+    <img class="game-image" src="https://www.coolmathgames.com/sites/default/files/Run%203%20Square%20Image.png" alt="Game 4">
+    <div class="game-title">Run 3</div>
+  </div>
+  <div class="game-card" onclick="openGame('https://www.hahagames.com/embed/snow-rider-3d')">
+    <img class="game-image" src="https://i0.wp.com/diva-magazine.com/wp-content/uploads/2025/11/snow-rider-3d.jpg?fit=300%2C300&ssl=1" alt="Game 4">
+    <div class="game-title">Snow Rider 3D</div>
+  </div>
+
+  <div class="game-card" onclick="openGame('https://www.hahagames.com/embed/drive-mad')">
+    <img class="game-image" src="https://drivemadgame.cc/uploads/games/main/img_68c3e328e0294.jpg" alt="Game 4">
+    <div class="game-title">Drive Mad</div>
+  </div>
+
+  <div class="game-card" onclick="openGame('https://www.hahagames.com/embed/growden-io')">
+    <img class="game-image" src="https://1games.io/data/image/game/growden-io/banner/growden-io.png" alt="Game 4">
+    <div class="game-title">Growden.io</div>
+  </div>
+  <div class="game-card" onclick="openGame('https://www.hahagames.com/embed/moto-x3m-original')">
+    <img class="game-image" src="https://1games.io/data/image/game/growden-io/banner/growden-io.png" alt="Game 4">
+    <div class="game-title">Moto X3M</div>
+  </div>
 </div>
 
 <div class="overlay" id="overlay">
@@ -157,6 +244,8 @@
 </div>
 
 <script>
+  const urltype = document.getElementById('unblockurltype');
+
   function openGame(url) {
     document.getElementById('gameFrame').src = url;
     document.getElementById('overlay').style.display = 'flex';
@@ -166,6 +255,11 @@
   function closeGame() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('gameFrame').src = '';
+  }
+  function openGamebyurl() {
+    document.getElementById('gameFrame').src = urltype.value;
+    document.getElementById('overlay').style.display = 'flex';
+    console.log("Game Opened");
   }
 </script>
 
